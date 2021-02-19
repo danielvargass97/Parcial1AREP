@@ -2,12 +2,12 @@ package edu.escuelaing.arep.calculator;
 
 public class TrigonometricRatios {
 	
-	String oper;
+	String oper, answer;
 	Double num, result;
 	public TrigonometricRatios() {
 		
 	}
-	public Double calculate(String oper, Double num) {
+	public String calculate(String oper, Double num) {
 		this.oper = oper;
 		this.num = num;
 		switch (oper) {
@@ -22,18 +22,21 @@ public class TrigonometricRatios {
 		}
 	}
 	
-	public Double cos() {
+	public String cos() {
 		result = Math.cos(num);
-		return result;
+		answer = String.valueOf(result);
+		return "{\"value\":"+answer+"}";
 	}
 	
-	public Double sin() {
+	public String sin() {
 		result = Math.sin(num);
-		return result;
+		answer = String.valueOf(result);
+		return "{\"value\":"+answer+"}";
 	}
 	
-	public Double tan() {
+	public String tan() {
 		result = Math.tan(num);
-		return result;
+		answer = String.valueOf(result);
+		return "{\"value\":"+answer+"}";
 	}
 }

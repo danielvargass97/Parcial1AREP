@@ -1,6 +1,8 @@
 package edu.escuelaing.arep;
 
-import static spark.Spark.*;
+import static spark.Spark.get;
+import static spark.Spark.port;
+import com.google.gson.JsonParser;
 
 import edu.escuelaing.arep.calculator.TrigonometricRatios;
 
@@ -22,7 +24,8 @@ public class SparkWebApp {
 		get("/", (req, res) -> {
 			Double num = Double.parseDouble(req.queryParams("value"));
 			String oper = req.queryParams("operation");
-			return RC.calculate(oper, num);
+			String answer = RC.calculate(oper, num);
+			return new JsonParser().parse(answer).getAsJsonObject();
 		});
 	}
 	
